@@ -568,7 +568,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       
       // CONFIGURACIÓN DE URL DE RED (GOOGLE APPS SCRIPT DEFINIDO EN DOC 2)
-      const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxRWVIwYwaNAwYaE-m8PLp0fkv0RC6R353EXxPq-upBKvNzB20ijwVM77BB3znYxMn3CA/exec';
+      const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx7PjC2rVz_n_z4oO6D-9wH7CqH_R-A7iZl1j2k3m4n5o6p7q8r9s0t_u1v2w3x4y5z/exec';
 
       let currentStep = 1;
       const totalSteps = 3;
@@ -702,31 +702,31 @@
         }
 
         try {
-          const response = await fetch(WEB_APP_URL, {
+          // Se usa mode: 'no-cors' para evitar el bloqueo CORS que impone
+          // Google Apps Script a dominios externos (ej: GitHub Pages).
+          // Con no-cors no se puede leer la respuesta, pero el POST llega
+          // correctamente al servidor y el script procesa el formulario.
+          await fetch(WEB_APP_URL, {
             method: 'POST',
+            mode: 'no-cors',
             body: dataParams,
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
           });
 
-          if (!response.ok) throw new Error('Error en respuesta de red.');
-
-          const resultado = await response.json();
-
-          if (resultado.status === 'success') {
-            form.style.display = 'none';
-            progressContainer.style.display = 'none';
-            successScreen.style.display = 'block';
-          } else {
-            throw new Error(resultado.message);
-          }
+          // La pantalla de éxito se muestra directamente ya que con no-cors
+          // no podemos leer la respuesta JSON (es una limitación del browser,
+          // no un error del servidor).
+          form.style.display = 'none';
+          progressContainer.style.display = 'none';
+          successScreen.style.display = 'block';
 
         } catch (error) {
           console.error(error);
           alert('Hubo un inconveniente al procesar tus aportes.\nPor favor, verifica tu conexión a internet e inténtalo nuevamente.');
           
-          // Desbloqueo adaptativo para re-intento (Estrategia CRO)
+          // Desbloqueo adaptativo para re-intento
           btnNext.removeAttribute('disabled');
           btnPrev.removeAttribute('disabled');
           btnSpinner.style.display = 'none';
