@@ -3,737 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Participación Ciudadana - Mesa Redonda "Trabajo Digno vs Precarización Laboral"</title>
-  
+  <title>Participación Ciudadana – Trabajo Digno vs Precarización Laboral</title>
   <style>
-    /* ==========================================================================
-       VARIABLES DE DISEÑO - IDENTIDAD VISUAL PREMIUM
-       ========================================================================== */
     :root {
-      --bg-gradient-start: #0f172a; /* Slate 900 */
-      --bg-gradient-end: #1e293b;   /* Slate 800 */
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-focus-border: rgba(16, 185, 129, 0.4); /* Emerald 500 */
-      
-      --text-primary: #f8fafc;   /* Slate 50 */
-      --text-secondary: #94a3b8; /* Slate 400 */
-      --text-muted: #64748b;     /* Slate 500 */
-      --accent: #10b981;         /* Emerald 500 */
-      --accent-hover: #059669;   /* Emerald 600 */
-      --error: #ef4444;          /* Red 500 */
-      
-      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --radius-md: 12px;
-      --radius-lg: 24px;
+      --azul-oscuro:   #0d2b4e;
+      --azul-medio:    #1a4a7a;
+      --azul-claro:    #4a90c4;
+      --azul-suave:    #e8f2fb;
+      --naranja:       #f47c20;
+      --naranja-hover: #d9660f;
+      --naranja-suave: #fff3e8;
+      --blanco:        #ffffff;
+      --gris-texto:    #2c3e50;
+      --gris-borde:    #c8daea;
+      --gris-label:    #5a7a99;
+      --radio:         10px;
+      --radio-lg:      18px;
+      --sombra:        0 4px 20px rgba(13,43,78,0.12);
+      --trans:         all 0.25s ease;
     }
 
-    /* ==========================================================================
-       RESET Y ESTILOS BASE (ACCESIBILIDAD Y FLUIDEZ MOBILE-FIRST)
-       ========================================================================== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: var(--font-main);
-      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(150deg, var(--azul-oscuro) 0%, var(--azul-medio) 60%, #1e6091 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Mejor scroll en móviles largos */
-      padding: 16px;
-      line-height: 1.5;
+      align-items: flex-start;
+      padding: 24px 16px 40px;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ==========================================================================
-       ARQUITECTURA DE PERSUASIÓN VISUAL: CONTENEDOR PRINCIPAL
-       ========================================================================== */
-    .container {
+    .card {
       width: 100%;
-      max-width: 680px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      padding: 32px 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      margin: 20px 0;
-      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 620px;
+      background: var(--blanco);
+      border-radius: var(--radio-lg);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      margin-top: 12px;
     }
 
-    /* Cabecera reducida para optimizar el espacio vertical en móviles */
-    .header {
+    .card-header {
+      background: var(--azul-oscuro);
+      padding: 28px 32px 22px;
       text-align: center;
-      margin-bottom: 24px;
     }
 
-    .tag-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      color: var(--accent);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+    .badge {
+      display: inline-block;
+      background: var(--naranja);
+      color: var(--blanco);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
       margin-bottom: 12px;
     }
 
-    .tag-live::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    h1 {
-      font-size: 1.6rem;
+    .card-header h1 {
+      color: var(--blanco);
+      font-size: 1.25rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 8px;
-      background: linear-gradient(to right, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+      margin-bottom: 6px;
     }
 
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+    .card-header p { color: #9ab8d4; font-size: 0.82rem; }
+
+    .progress-wrap {
+      background: var(--azul-suave);
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--gris-borde);
     }
 
-    /* ==========================================================================
-       SISTEMA DE BARRA DE PROGRESO (FEEDBACK COGNITIVO)
-       ========================================================================= */
-    .progress-container {
-      margin-bottom: 32px;
-    }
-
-    .progress-bar-bg {
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.05);
+    .progress-track {
+      height: 5px;
+      background: #c8daea;
       border-radius: 3px;
       overflow: hidden;
     }
 
-    .progress-bar-fill {
+    .progress-fill {
       height: 100%;
-      width: 33.33%; /* Estado Inicial */
-      background: linear-gradient(90deg, var(--accent), #34d399);
+      background: linear-gradient(90deg, var(--naranja), #f7a44a);
       border-radius: 3px;
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.4s ease;
+      width: 33.33%;
     }
 
     .progress-labels {
       display: flex;
       justify-content: space-between;
       margin-top: 8px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
     }
 
-    .progress-step-label.active {
-      color: var(--accent);
-      font-weight: 600;
-    }
+    .progress-labels span { font-size: 0.72rem; color: var(--gris-label); font-weight: 500; }
+    .progress-labels span.activo { color: var(--naranja); font-weight: 700; }
 
-    /* ==========================================================================
-       ARQUITECTURA MULTI-PANTALLA (STEPS)
-       ========================================================================== */
-    .form-step {
-      display: none;
-      animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .card-body { padding: 28px 32px 8px; }
 
-    .form-step.active {
-      display: block;
-    }
+    .step { display: none; }
+    .step.activo { display: block; }
 
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 20px;
+    .step-titulo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--azul-oscuro);
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .optional-tag {
-      font-size: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-secondary);
+    .step-titulo .num {
+      background: var(--naranja);
+      color: var(--blanco);
+      font-size: 0.72rem;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-sub { font-size: 0.82rem; color: var(--gris-label); margin-bottom: 22px; }
+
+    .opcional {
+      font-size: 0.72rem;
+      background: var(--azul-suave);
+      color: var(--azul-claro);
       padding: 2px 8px;
       border-radius: 4px;
-      font-weight: 400;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr; /* Forzado a 1 columna para ergonomía mobile */
-      gap: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    label {
-      font-size: 0.85rem;
       font-weight: 500;
-      color: var(--text-primary);
     }
 
-    label .required {
-      color: var(--error);
-      margin-left: 2px;
-    }
+    .campo { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
 
-    /* Input Fields */
+    label { font-size: 0.83rem; font-weight: 600; color: var(--gris-texto); }
+    label .req { color: var(--naranja); margin-left: 2px; }
+
     input[type="text"],
     input[type="email"],
     input[type="date"],
     select,
     textarea {
       width: 100%;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      padding: 14px; /* Un poco más amplio para facilitar el tap táctil */
-      font-family: var(--font-main);
-      font-size: 1rem; /* Previene el zoom automático de iOS en inputs */
-      color: var(--text-primary);
-      transition: var(--transition-smooth);
+      border: 1.5px solid var(--gris-borde);
+      border-radius: var(--radio);
+      padding: 11px 14px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--gris-texto);
+      background: var(--blanco);
+      transition: var(--trans);
       outline: none;
-      -webkit-appearance: none; /* Reseteo mobile */
+      -webkit-appearance: none;
     }
 
     input:focus, select:focus, textarea:focus {
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+      border-color: var(--azul-claro);
+      box-shadow: 0 0 0 3px rgba(74,144,196,0.15);
     }
 
-    select option {
-      background: var(--bg-gradient-start);
-      color: var(--text-primary);
-    }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-      line-height: 1.5;
-    }
-
-    /* Radio Card Selector (Ergonomía Táctil en Celulares) */
-    .radio-card-group {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
+    .radio-grupo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
     .radio-card {
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      padding: 14px;
+      border: 1.5px solid var(--gris-borde);
+      border-radius: var(--radio);
+      padding: 12px 16px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
-      transition: var(--transition-smooth);
-      background: rgba(255, 255, 255, 0.01);
+      transition: var(--trans);
+      background: var(--blanco);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--gris-texto);
+    }
+
+    .radio-card:hover { border-color: var(--azul-claro); background: var(--azul-suave); }
+
+    .radio-card.seleccionado {
+      border-color: var(--naranja);
+      background: var(--naranja-suave);
+      color: var(--azul-oscuro);
     }
 
     .radio-card input[type="radio"] {
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--text-muted);
-      border-radius: 50%;
-      outline: none;
-      display: grid;
-      place-content: center;
+      width: 18px; height: 18px;
+      accent-color: var(--naranja);
+      flex-shrink: 0;
     }
 
-    .radio-card input[type="radio"]::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      transform: scale(0);
-      transition: var(--transition-smooth);
-      background-color: var(--accent);
-    }
-
-    .radio-card input[type="radio"]:checked {
-      border-color: var(--accent);
-    }
-
-    .radio-card input[type="radio"]:checked::before {
-      transform: scale(1);
-    }
-
-    .radio-card.selected {
-      border-color: var(--accent);
-      background: rgba(16, 185, 129, 0.04);
-    }
-
-    /* Bloque Condicional */
-    .conditional-block {
+    .condicional {
       max-height: 0;
-      opacity: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.2s ease;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.25s ease, margin 0.3s ease;
     }
 
-    .conditional-block.show {
-      max-height: 100px;
-      opacity: 1;
-      margin-top: 10px;
-    }
+    .condicional.visible { max-height: 120px; opacity: 1; margin-top: 14px; }
 
-    /* ==========================================================================
-       BOTONERA DE NAVEGACIÓN INTELLIGENT NAVIGATION (CRO)
-       ========================================================================== */
-    .navigation-container {
-      margin-top: 32px;
-      display: flex;
-      gap: 12px;
-    }
+    .nav { padding: 20px 32px 28px; display: flex; gap: 12px; }
 
     .btn {
       flex: 1;
-      border-radius: var(--radius-md);
-      padding: 16px;
-      font-size: 1rem;
-      font-weight: 600;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radio);
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: var(--transition-smooth);
+      transition: var(--trans);
       display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      border: none;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #042f1a;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    .btn-primario {
+      background: var(--naranja);
+      color: var(--blanco);
+      box-shadow: 0 3px 12px rgba(244,124,32,0.3);
     }
 
-    .btn-primary:hover:not(:disabled) {
-      background: var(--accent-hover);
+    .btn-primario:hover:not(:disabled) { background: var(--naranja-hover); }
+    .btn-primario:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .btn-secundario {
+      background: var(--azul-suave);
+      color: var(--azul-medio);
+      border: 1.5px solid var(--gris-borde);
     }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      color: var(--text-primary);
-    }
+    .btn-secundario:hover { background: #d0e6f5; }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    /* Spinner */
     .spinner {
       display: none;
-      width: 18px;
-      height: 18px;
-      border: 3px solid rgba(4, 47, 26, 0.2);
+      width: 16px; height: 16px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: var(--blanco);
       border-radius: 50%;
-      border-top-color: #042f1a;
-      animation: spin 0.8s linear infinite;
+      animation: girar 0.7s linear infinite;
     }
 
-    /* Pantalla de Éxito */
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 32px 12px;
-      animation: scaleUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+    @keyframes girar { to { transform: rotate(360deg); } }
 
-    .success-icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 2px solid var(--accent);
+    .exito { display: none; text-align: center; padding: 52px 32px; }
+
+    .exito-icono {
+      width: 64px; height: 64px;
+      background: var(--naranja-suave);
+      border: 2.5px solid var(--naranja);
       border-radius: 50%;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      color: var(--accent);
-      font-size: 1.8rem;
+      justify-content: center;
+      font-size: 2rem;
       margin-bottom: 20px;
+      color: var(--naranja);
     }
 
-    /* ==========================================================================
-       ANIMACIONES
-       ========================================================================== */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+    .exito h2 { color: var(--azul-oscuro); font-size: 1.3rem; margin-bottom: 10px; }
+
+    .exito p {
+      color: var(--gris-label);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(10px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
+    .divisor { height: 1px; background: var(--gris-borde); margin: 4px 0 20px; }
 
-    @keyframes scaleUp {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    @media (max-width: 480px) {
+      .card-body { padding: 22px 20px 8px; }
+      .nav { padding: 16px 20px 24px; }
+      .card-header { padding: 22px 20px 18px; }
+      .progress-wrap { padding: 12px 20px; }
+      .radio-grupo { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <div class="progress-container" id="progressContainer">
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" id="progressBarFill"></div>
-      </div>
-      <div class="progress-labels">
-        <span class="progress-step-label active" id="labelStep1">1. Perfil</span>
-        <span class="progress-step-label" id="labelStep2">2. Entidad</span>
-        <span class="progress-step-label" id="labelStep3">3. Aportes</span>
-      </div>
+<div class="card">
+
+  <div class="card-header">
+    <div class="badge">Mesa Redonda</div>
+    <h1>Trabajo Digno vs Precarización Laboral</h1>
+    <p>Participación Ciudadana — Registro de Aportes</p>
+  </div>
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
     </div>
+    <div class="progress-labels">
+      <span id="lbl1" class="activo">1. Perfil</span>
+      <span id="lbl2">2. Pertenencia</span>
+      <span id="lbl3">3. Aportes</span>
+    </div>
+  </div>
 
-    <form id="citizenshipForm" novalidate>
-      
-      <div class="form-step active" id="step1">
-        <header class="header">
-          <div class="tag-live">Mesa Redonda</div>
-          <h1>Datos Personales</h1>
-          <p class="subtitle">Identificación básica para el registro de actas del encuentro.</p>
-        </header>
-        
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="apellido">Apellido/s <span class="required">*</span></label>
-            <input type="text" id="apellido" name="apellido" required autocomplete="family-name">
-          </div>
-          
-          <div class="form-group">
-            <label for="nombre">Nombre/s <span class="required">*</span></label>
-            <input type="text" id="nombre" name="nombre" required autocomplete="given-name">
-          </div>
+  <form id="formulario" novalidate>
+    <div class="card-body">
 
-          <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de Nacimiento <span class="required">*</span></label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-          </div>
+      <!-- PASO 1 -->
+      <div class="step activo" id="step1">
+        <div class="step-titulo"><span class="num">1</span> Datos Personales</div>
+        <p class="step-sub">Identificación para el registro de actas del encuentro.</p>
+        <div class="divisor"></div>
 
-          <div class="form-group">
-            <label for="celular">Celular <span class="required">*</span></label>
-            <input type="text" id="celular" name="celular" placeholder="Ej: 2615555555" required autocomplete="tel">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Correo Electrónico <span class="required">*</span></label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-
-          <div class="form-group">
-            <label for="actividad">Actividad / Oficio / Profesión <span class="required">*</span></label>
-            <input type="text" id="actividad" name="actividad" required>
-          </div>
-
-          <div class="form-group">
-            <label for="departamento">Departamento de Residencia <span class="required">*</span></label>
-            <select id="departamento" name="departamento" required>
-              <option value="" selected disabled>Seleccionar</option>
-              <option value="Capital">Capital</option>
-              <option value="Godoy Cruz">Godoy Cruz</option>
-              <option value="Guaymallén">Guaymallén</option>
-              <option value="Las Heras">Las Heras</option>
-              <option value="Lavalle">Lavalle</option>
-              <option value="Luján de Cuyo">Luján de Cuyo</option>
-              <option value="Maipú">Maipú</option>
-              <option value="San Martín">San Martín</option>
-              <option value="Junín">Junín</option>
-              <option value="Rivadavia">Rivadavia</option>
-              <option value="Santa Rosa">Santa Rosa</option>
-              <option value="La Paz">La Paz</option>
-              <option value="Tunuyán">Tunuyán</option>
-              <option value="Tupungato">Tupungato</option>
-              <option value="San Carlos">San Carlos</option>
-              <option value="San Rafael">San Rafael</option>
-              <option value="General Alvear">General Alvear</option>
-              <option value="Malargüe">Malargüe</option>
-            </select>
-          </div>
+        <div class="campo">
+          <label for="apellido">Apellido/s <span class="req">*</span></label>
+          <input type="text" id="apellido" name="apellido" required autocomplete="family-name">
+        </div>
+        <div class="campo">
+          <label for="nombre">Nombre/s <span class="req">*</span></label>
+          <input type="text" id="nombre" name="nombre" required autocomplete="given-name">
+        </div>
+        <div class="campo">
+          <label for="fecha_nacimiento">Fecha de Nacimiento <span class="req">*</span></label>
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        </div>
+        <div class="campo">
+          <label for="celular">Celular <span class="req">*</span></label>
+          <input type="text" id="celular" name="celular" placeholder="Ej: 2615555555" required autocomplete="tel">
+        </div>
+        <div class="campo">
+          <label for="email">Correo Electrónico <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="campo">
+          <label for="actividad">Actividad / Oficio / Profesión <span class="req">*</span></label>
+          <input type="text" id="actividad" name="actividad" required>
+        </div>
+        <div class="campo">
+          <label for="departamento">Departamento de Residencia <span class="req">*</span></label>
+          <select id="departamento" name="departamento" required>
+            <option value="" disabled selected>Seleccioná tu departamento</option>
+            <option>Capital</option>
+            <option>Godoy Cruz</option>
+            <option>Guaymallén</option>
+            <option>Las Heras</option>
+            <option>Lavalle</option>
+            <option>Luján de Cuyo</option>
+            <option>Maipú</option>
+            <option>San Martín</option>
+            <option>Junín</option>
+            <option>Rivadavia</option>
+            <option>Santa Rosa</option>
+            <option>La Paz</option>
+            <option>Tunuyán</option>
+            <option>Tupungato</option>
+            <option>San Carlos</option>
+            <option>San Rafael</option>
+            <option>General Alvear</option>
+            <option>Malargüe</option>
+          </select>
         </div>
       </div>
 
-      <div class="form-step" id="step2">
-        <header class="header">
-          <h1>Pertenencia Social</h1>
-          <p class="subtitle">Ayúdanos a entender el tejido institucional de los asistentes.</p>
-        </header>
+      <!-- PASO 2 -->
+      <div class="step" id="step2">
+        <div class="step-titulo"><span class="num">2</span> Pertenencia Social</div>
+        <p class="step-sub">Ayudanos a entender el tejido institucional de los asistentes.</p>
+        <div class="divisor"></div>
 
-        <div class="form-group">
-          <label>¿Integra alguna institución u organización? <span class="required">*</span></label>
-          <div class="radio-card-group">
-            <label class="radio-card" id="label-institucion-si">
+        <div class="campo">
+          <label>¿Integra alguna institución u organización? <span class="req">*</span></label>
+          <div class="radio-grupo">
+            <label class="radio-card" id="cardSi">
               <input type="radio" name="integra_institucion" value="Sí" required>
-              <span>Sí, participo</span>
+              Sí, participo
             </label>
-            <label class="radio-card" id="label-institucion-no">
+            <label class="radio-card" id="cardNo">
               <input type="radio" name="integra_institucion" value="No">
-              <span>No, asisto de forma particular</span>
+              No, asisto de forma particular
             </label>
           </div>
-          
-          <div class="conditional-block" id="conditional-institucion">
-            <div class="form-group">
-              <label for="institucion_cual">¿Cuál es la institución u organización? <span class="required">*</span></label>
+          <div class="condicional" id="bloqueInstitucion">
+            <div class="campo" style="margin-bottom:0">
+              <label for="institucion_cual">¿Cuál es la institución u organización? <span class="req">*</span></label>
               <input type="text" id="institucion_cual" name="institucion_cual" placeholder="Sindicato, agrupación, club, etc.">
             </div>
           </div>
         </div>
       </div>
 
-      <div class="form-step" id="step3">
-        <header class="header">
-          <h1>Matriz de Aportes <span class="optional-tag">Opcional</span></h1>
-          <p class="subtitle">Propuestas ideológicas para el documento de conclusiones. Puedes completarlas ahora o enviar el formulario directamente.</p>
-        </header>
+      <!-- PASO 3 -->
+      <div class="step" id="step3">
+        <div class="step-titulo">
+          <span class="num">3</span> Matriz de Aportes
+          <span class="opcional">Opcional</span>
+        </div>
+        <p class="step-sub">Propuestas para el documento de conclusiones. Podés completarlas ahora o enviar directamente.</p>
+        <div class="divisor"></div>
 
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="aporte_diagnostico">¿Qué aportes considera necesario sumar al diagnóstico realizado por los panelistas?</label>
-            <textarea id="aporte_diagnostico" name="aporte_diagnostico" placeholder="Tu perspectiva sobre la realidad laboral analizada..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="aporte_propuestas">¿Qué propuestas de políticas, programas o líneas de acción sumaría?</label>
-            <textarea id="aporte_propuestas" name="aporte_propuestas" placeholder="Líneas de acción concretas, ideas para la transformación..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="aporte_lineamientos">¿Qué otros lineamientos políticos considera necesario abordar?</label>
-            <textarea id="aporte_lineamientos" name="aporte_lineamientos" placeholder="Estrategias políticas de mediano y largo plazo..."></textarea>
-          </div>
+        <div class="campo">
+          <label for="aporte_diagnostico">¿Qué aportes considera necesario sumar al diagnóstico realizado por los panelistas?</label>
+          <textarea id="aporte_diagnostico" name="aporte_diagnostico" placeholder="Tu perspectiva sobre la realidad laboral analizada..."></textarea>
+        </div>
+        <div class="campo">
+          <label for="aporte_propuestas">¿Qué propuestas de políticas, programas o líneas de acción sumaría?</label>
+          <textarea id="aporte_propuestas" name="aporte_propuestas" placeholder="Líneas de acción concretas, ideas para la transformación..."></textarea>
+        </div>
+        <div class="campo">
+          <label for="aporte_lineamientos">¿Qué otros lineamientos políticos considera necesario abordar?</label>
+          <textarea id="aporte_lineamientos" name="aporte_lineamientos" placeholder="Estrategias políticas de mediano y largo plazo..."></textarea>
         </div>
       </div>
 
-      <div class="navigation-container">
-        <button type="button" class="btn btn-secondary" id="btnPrev" style="display: none;">Anterior</button>
-        <button type="button" class="btn btn-primary" id="btnNext">Siguiente</button>
-      </div>
-
-    </form>
-
-    <div class="success-screen" id="successScreen">
-      <div class="success-icon">✓</div>
-      <h1>¡Aporte Registrado!</h1>
-      <p class="subtitle" style="margin-bottom: 20px;">Agradecemos profundamente tu compromiso político y social. Tus ideas ya se encuentran en proceso de consolidación para las conclusiones de la mesa redonda.</p>
-      <p class="subtitle" style="font-size: 0.85rem; opacity: 0.7;">Se ha enviado de forma automatizada un respaldo en formato técnico PDF a las casillas de coordinación ejecutiva.</p>
     </div>
+
+    <div class="nav">
+      <button type="button" class="btn btn-secundario" id="btnAnterior" style="display:none">← Anterior</button>
+      <button type="button" class="btn btn-primario" id="btnSiguiente">Siguiente →</button>
+    </div>
+  </form>
+
+  <div class="exito" id="pantallaExito">
+    <div class="exito-icono">✓</div>
+    <h2>¡Aporte Registrado!</h2>
+    <p>Agradecemos profundamente tu compromiso político y social. Tus ideas ya se encuentran en proceso de consolidación para las conclusiones de la mesa redonda.</p>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // CONFIGURACIÓN DE URL DE RED (GOOGLE APPS SCRIPT DEFINIDO EN DOC 2)
-      const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxRWVIwYwaNAwYaE-m8PLp0fkv0RC6R353EXxPq-upBKvNzB20ijwVM77BB3znYxMn3CA/exec';
+</div>
 
-      let currentStep = 1;
-      const totalSteps = 3;
+<script>
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxvFUSSfYmsZ2YyHg1knJAVIXwwlCPV6CX-my0whVtdEpCHXhSRC7cBjXCGtWjwB4jDlw/exec';
 
-      const form = document.getElementById('citizenshipForm');
-      const progressContainer = document.getElementById('progressContainer');
-      const successScreen = document.getElementById('successScreen');
-      
-      const btnNext = document.getElementById('btnNext');
-      const btnPrev = document.getElementById('btnPrev');
-      const progressBarFill = document.getElementById('progressBarFill');
+  const TOTAL = 3;
+  let paso = 1;
 
-      const radioSi = document.querySelector('input[value="Sí"]');
-      const radioNo = document.querySelector('input[value="No"]');
-      const conditionalBlock = document.getElementById('conditional-institucion');
-      const inputCual = document.getElementById('institucion_cual');
-      const cardSi = document.getElementById('label-institucion-si');
-      const cardNo = document.getElementById('label-institucion-no');
+  const form           = document.getElementById('formulario');
+  const btnSig         = document.getElementById('btnSiguiente');
+  const btnAnt         = document.getElementById('btnAnterior');
+  const progressFill   = document.getElementById('progressFill');
+  const progressWrap   = document.getElementById('progressWrap');
+  const pantallaExito  = document.getElementById('pantallaExito');
+  const radioSi        = document.querySelector('input[value="Sí"]');
+  const radioNo        = document.querySelector('input[value="No"]');
+  const bloqueInst     = document.getElementById('bloqueInstitucion');
+  const inputInst      = document.getElementById('institucion_cual');
+  const cardSi         = document.getElementById('cardSi');
+  const cardNo         = document.getElementById('cardNo');
 
-      /* ------------------------------------------------------------------------
-         MANEJO DINÁMICO CONDICIONAL (PANTALLA 2)
-         ------------------------------------------------------------------------ */
-      function actualizarBloqueInstitucional() {
-        if (radioSi.checked) {
-          conditionalBlock.classList.add('show');
-          inputCual.setAttribute('required', 'required');
-          cardSi.classList.add('selected');
-          cardNo.classList.remove('selected');
-        } else if (radioNo.checked) {
-          conditionalBlock.classList.remove('show');
-          inputCual.removeAttribute('required');
-          inputCual.value = '';
-          cardNo.classList.add('selected');
-          cardSi.classList.remove('selected');
-        }
-      }
+  function actualizarInstitucion() {
+    if (radioSi.checked) {
+      bloqueInst.classList.add('visible');
+      inputInst.setAttribute('required', 'required');
+      cardSi.classList.add('seleccionado');
+      cardNo.classList.remove('seleccionado');
+    } else {
+      bloqueInst.classList.remove('visible');
+      inputInst.removeAttribute('required');
+      inputInst.value = '';
+      cardNo.classList.add('seleccionado');
+      cardSi.classList.remove('seleccionado');
+    }
+  }
 
-      radioSi.addEventListener('change', actualizarBloqueInstitucional);
-      radioNo.addEventListener('change', actualizarBloqueInstitucional);
+  radioSi.addEventListener('change', actualizarInstitucion);
+  radioNo.addEventListener('change', actualizarInstitucion);
 
-      /* ------------------------------------------------------------------------
-         SISTEMA DE NAVEGACIÓN FLUIDA INTER-PANTALLAS
-         ------------------------------------------------------------------------ */
-      function updateStepView() {
-        // Alternancia de pantallas
-        document.querySelectorAll('.form-step').forEach((step, index) => {
-          step.classList.toggle('active', index + 1 === currentStep);
-        });
-
-        // Configuración de la barra de progreso
-        const progressPercentage = (currentStep / totalSteps) * 100;
-        progressBarFill.style.width = `${progressPercentage}%`;
-
-        // Actualización de etiquetas de la barra
-        document.querySelectorAll('.progress-step-label').forEach((label, index) => {
-          label.classList.toggle('active', index + 1 === currentStep);
-        });
-
-        // Ajuste táctil y de etiquetas en los botones
-        if (currentStep === 1) {
-          btnPrev.style.display = 'none';
-          btnNext.textContent = 'Siguiente';
-        } else if (currentStep === totalSteps) {
-          btnPrev.style.display = 'block';
-          btnNext.innerHTML = '<span class="spinner" id="btnSpinner"></span><span id="btnText">Finalizar y Enviar</span>';
-        } else {
-          btnPrev.style.display = 'block';
-          btnNext.textContent = 'Siguiente';
-        }
-        
-        // Scroll automático al tope del contenedor para mejor UX móvil
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      function validateCurrentStep() {
-        const currentStepElement = document.getElementById(`step${currentStep}`);
-        const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
-        
-        let valid = true;
-        for (let input of inputs) {
-          if (!input.checkValidity()) {
-            input.reportValidity();
-            valid = false;
-            break;
-          }
-        }
-        return valid;
-      }
-
-      // Handler del botón de avance / ejecución final
-      btnNext.addEventListener('click', () => {
-        if (currentStep < totalSteps) {
-          if (validateCurrentStep()) {
-            currentStep++;
-            updateStepView();
-          }
-        } else {
-          // Si estamos en el último paso, ejecutamos la acción de envío
-          if (validateCurrentStep()) {
-            ejecutarEnvioFormulario();
-          }
-        }
-      });
-
-      // Handler del botón de retroceso
-      btnPrev.addEventListener('click', () => {
-        if (currentStep > 1) {
-          currentStep--;
-          updateStepView();
-        }
-      });
-
-      /* ------------------------------------------------------------------------
-         COMUNICACIÓN CON EL SERVIDOR CENTRAL (API FETCH ASÍNCRONA)
-         ------------------------------------------------------------------------ */
-      async function ejecutarEnvioFormulario() {
-        const btnSpinner = document.getElementById('btnSpinner');
-        const btnText = document.getElementById('btnText');
-
-        // Bloqueo preventivo de interfaz
-        btnNext.setAttribute('disabled', 'disabled');
-        btnPrev.setAttribute('disabled', 'disabled');
-        btnSpinner.style.display = 'block';
-        btnText.textContent = 'Enviando...';
-
-        const formData = new FormData(form);
-        const dataParams = new URLSearchParams();
-        
-        for (const pair of formData) {
-          dataParams.append(pair[0], pair[1]);
-        }
-
-        try {
-          // Se usa mode: 'no-cors' para evitar el bloqueo CORS que impone
-          // Google Apps Script a dominios externos (ej: GitHub Pages).
-          // Con no-cors no se puede leer la respuesta, pero el POST llega
-          // correctamente al servidor y el script procesa el formulario.
-          await fetch(WEB_APP_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: dataParams,
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
-          });
-
-          // La pantalla de éxito se muestra directamente ya que con no-cors
-          // no podemos leer la respuesta JSON (es una limitación del browser,
-          // no un error del servidor).
-          form.style.display = 'none';
-          progressContainer.style.display = 'none';
-          successScreen.style.display = 'block';
-
-        } catch (error) {
-          console.error(error);
-          alert('Hubo un inconveniente al procesar tus aportes.\nPor favor, verifica tu conexión a internet e inténtalo nuevamente.');
-          
-          // Desbloqueo adaptativo para re-intento
-          btnNext.removeAttribute('disabled');
-          btnPrev.removeAttribute('disabled');
-          btnSpinner.style.display = 'none';
-          btnText.textContent = 'Finalizar y Enviar';
-        }
-      }
+  function actualizarVista() {
+    document.querySelectorAll('.step').forEach((s, i) => {
+      s.classList.toggle('activo', i + 1 === paso);
     });
-  </script>
+    progressFill.style.width = ((paso / TOTAL) * 100) + '%';
+    ['lbl1','lbl2','lbl3'].forEach((id, i) => {
+      document.getElementById(id).classList.toggle('activo', i + 1 === paso);
+    });
+    btnAnt.style.display = paso === 1 ? 'none' : 'flex';
+    if (paso === TOTAL) {
+      btnSig.innerHTML = '<span class="spinner" id="spinner"></span><span id="btnTexto">Enviar aportes</span>';
+    } else {
+      btnSig.innerHTML = 'Siguiente →';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function validarPaso() {
+    const stepEl = document.getElementById('step' + paso);
+    const campos = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
+    for (let c of campos) {
+      if (!c.checkValidity()) { c.reportValidity(); return false; }
+    }
+    return true;
+  }
+
+  async function enviar() {
+    const spinner  = document.getElementById('spinner');
+    const btnTexto = document.getElementById('btnTexto');
+    btnSig.disabled = true;
+    btnAnt.disabled = true;
+    spinner.style.display = 'block';
+    btnTexto.textContent = 'Enviando...';
+
+    const formData   = new FormData(form);
+    const dataParams = new URLSearchParams();
+    for (const [k, v] of formData) { dataParams.append(k, v); }
+
+    try {
+      await fetch(WEB_APP_URL, {
+        method:  'POST',
+        mode:    'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    dataParams
+      });
+      form.style.display          = 'none';
+      progressWrap.style.display  = 'none';
+      pantallaExito.style.display = 'block';
+    } catch (err) {
+      console.error(err);
+      alert('Hubo un inconveniente al enviar. Verificá tu conexión e intentá nuevamente.');
+      btnSig.disabled = false;
+      btnAnt.disabled = false;
+      spinner.style.display = 'none';
+      btnTexto.textContent  = 'Enviar aportes';
+    }
+  }
+
+  btnSig.addEventListener('click', () => {
+    if (paso < TOTAL) {
+      if (validarPaso()) { paso++; actualizarVista(); }
+    } else {
+      if (validarPaso()) { enviar(); }
+    }
+  });
+
+  btnAnt.addEventListener('click', () => {
+    if (paso > 1) { paso--; actualizarVista(); }
+  });
+
+  actualizarVista();
+</script>
 </body>
 </html>
